@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+</head>
+<body>  
+  <nav>
+    <div class="social-icons">
+      <a href="https://github.com/Leenaashraf" target="_blank"><i class="fa-brands fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/leena-abdalla-2086602a6/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#Home">Home</a></li>
+      <li><a href="#About">About</a></li>
+      <li><a href="#Projects">Projects</a></li>
+      <li><a href="#Skills">Skills</a></li>
+      <li><a href="#Contact">Contact</a></li>
+    </ul>
+    <div class="resume">
+      <a href="Resume.pdf" target="_blank"><button>Resume</button></a>
+    </div>
+  </nav>
+
+  <header id="Home">
+    <h1 class="typing">
+      Hello, my name is<br>
+      Leena Abdalla<br>
+      Welcome to my portfolio
+    </h1>
+  </header>
+
+  <section id="About">
+    <h2>About</h2>
+    <p>
+      3rd year computer science student and aspiring software engineer. 
+      I enjoy building projects that make life easier and am constantly improving my skills in coding, problem-solving, and time management.
+    </p>
+  </section>
+
+  <section id="Projects">
+    <h2>Projects</h2>
+    <div class="projects-container">
+      <div class="project-card">
+        <h3>Inventory Management System</h3>
+        <p>System for tracking stock, generating reports, and managing inventory using OOP principles.</p>
+      </div>
+      <div class="project-card">
+        <h3>Info Scraper</h3>
+        <p>Automated web scraping tool that extracts structured data efficiently.</p>
+      </div>
+      <div class="project-card">
+        <h3>Healthcare Assistant</h3>
+        <p>AI-based assistant designed to help with healthcare-related administrative tasks.</p>
+      </div>
+      <div class="project-card">
+        <h3>Financial Support System</h3>
+        <p>System designed to manage and track financial aid applications.</p>
+      </div>
+      <div class="project-card">
+        <h3>Parking System</h3>
+        <p>Application that calculates parking time and charges for overstays.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="Skills">
+    <h2>Skills</h2>
+
+    <h3>Languages & Tools</h3>
+    <div class="skills-icons">
+      <div class="skill"><i class="devicon-python-plain"></i><span>Python</span></div>
+      <div class="skill"><i class="devicon-java-plain"></i><span>Java</span></div>
+      <div class="skill"><i class="devicon-html5-plain"></i><span>HTML</span></div>
+      <div class="skill"><i class="devicon-css3-plain"></i><span>CSS</span></div>
+      <div class="skill"><i class="devicon-javascript-plain"></i><span>JavaScript</span></div>
+      <div class="skill"><i class="devicon-mysql-plain"></i><span>SQL</span></div>
+      <div class="skill"><i class="devicon-git-plain"></i><span>Git/GitHub</span></div>
+      <div class="skill"><i class="fa-solid fa-terminal"></i><span>Kali Linux</span></div>
+    </div>
+
+    <h3>Programming & Development Skills</h3>
+    <p>
+      Object-oriented programming<br>
+      Data structures and algorithms<br>
+      JSON<br>
+      Full-stack development<br>
+      Large language models (LLMs)<br>
+      AI / ML tools<br>
+      SQL<br>
+      Penetration Testing / Linux Security
+    </p>
+  </section>
+
+  <section id="Contact">
+    <h2>Contact</h2>
+    <form id="contact-form">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Your Name" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" required>
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Your message here..." rows="5" required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
+ 
