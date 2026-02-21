@@ -136,6 +136,7 @@ section p, section ul {
   box-shadow: 0 4px 10px rgba(80, 255, 153, 0.5);
 }
 
+
 .skills-icons {
   display: flex;
   gap: 30px;
@@ -285,42 +286,61 @@ section.show, header.show {
   transform: translateY(0);
 }
 
-.typing-container {
-  font-family: 'Courier New', monospace;
-  font-size: 36px;
-  color: white;
-}
-
-.line1,
-.line2 {
+.typing {
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;
+  border-right: 2px solid #50ff99;
 }
 
-/* first line green, smaller */
-.line1 {
+.typing-small {
+  font-size: 24px;
   color: #50ff99;
-  font-size: 22px;
-  line-height: 1.2; /* tighter line spacing */
-  animation: typing1 2.5s steps(26, end) forwards;
+  animation: typingSmall 2s steps(20, end) 1, blink 0.7s step-end infinite;
 }
 
-/* second line white */
-.line2 {
-  color: white;
+.typing {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.typing-small {
+  font-size: 24px;
+  color: #50ff99;
+  border-right: 2px solid #50ff99;
+  animation: typingSmall 2s steps(20, end) 1, blink 0.7s step-end 2s 1;
+}
+
+.typing {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid #50ff99;
+  font-family: 'Courier New', monospace;
+  animation: typing 6s steps(50, end) forwards, blink 0.7s step-end infinite;
+  color: #fff;
   font-size: 36px;
-  line-height: 1.2; /* tighter line spacing */
-  animation: typing2 3s steps(17, end) 2.6s forwards;
+  line-height: 1.4;
 }
 
-/* keyframes for typing */
-@keyframes typing1 {
-  from { width: 0ch; border-right: 2px solid #50ff99; }
-  to   { width: 26ch; border-right: none; }
+.typing br {
+  content: "";
 }
 
-@keyframes typing2 {
-  from { width: 0ch; border-right: 2px solid white; }
-  to   { width: 17ch; border-right: 2px solid white; }
+.typing {
+  color: #fff;
+}
+
+.typing::first-line {
+  font-size: 20px;
+  color: #50ff99;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 45ch }
+}
+
+@keyframes blink {
+  50% { border-color: transparent }
 }
