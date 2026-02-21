@@ -70,14 +70,24 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
   height: 100vh;
-  padding: 50px;
+  padding: 0 50px;
+}
+
+header h3 {
+  color: #50ff99;
+  font-family: 'Courier New', monospace;
+  margin-bottom: 10px;
+}
+
+header h1 {
+  font-size: 48px;
+  line-height: 1.2;
 }
 
 section {
   max-width: 900px;
-  margin: 100px 50px;
+  margin: 100px 0 50px 50px;
   padding-top: 50px;
   scroll-margin-top: 100px;
 }
@@ -98,22 +108,40 @@ section p, section ul {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  margin-top: 20px;
 }
 
 .project-card {
   background: #0a153e;
-  padding: 20px;
+  border: 1px solid #50ff99;
   border-radius: 10px;
-  flex: 1 1 calc(45% - 20px);
-  min-width: 250px;
-  color: #50ff99;
+  padding: 15px;
+  width: 250px;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
+
+.project-card h3 {
+  color: #50ff99;
+  margin-bottom: 10px;
+}
+
+.project-card p {
+  color: #9da5bd;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(80, 255, 153, 0.5);
+}
+
 
 .skills-icons {
   display: flex;
   gap: 30px;
   margin-top: 15px;
-  flex-wrap: wrap;
+  line-height: 1.6px;
 }
 
 .skill {
@@ -155,16 +183,69 @@ section p, section ul {
   opacity: 1;
 }
 
-#Contact form {
-  max-width: 500px;
+#Skills h3{
+  font-family: 'Courier New', Courier, monospace;
+  color: #a5a5a5;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+#Skills p{
+  font-family: 'Courier New', Courier, monospace; 
+  color: #50ff99;
+  font-size: 18px;
+  line-height: 1.6;
   margin-top: 20px;
+  padding-left: 30px;
+}
+
+#About,
+#Projects,
+#Skills,
+#Contact {
+  max-width: 900px;
+  margin: 120px 0 120px 120px; 
+  text-align: left;
+}
+
+#About h2,
+#Projects h2,
+#Skills h2,
+#Contact h2 {
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+#About p,
+#Projects ul,
+#Contact p {
+  font-family: 'Courier New', Courier, monospace; 
+  color: #50ff99;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+#Contact {
+  max-width: 900px;
+  margin: 100px 50px 50px 50px;
+  text-align: left;
+}
+
+#contact-form {
+  max-width: 500px;       
+  margin: 20px auto 0 auto;
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-#Contact input,
-#Contact textarea {
+#contact-form label {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+}
+
+#contact-form input,
+#contact-form textarea {
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #50ff99;
@@ -173,12 +254,12 @@ section p, section ul {
   font-family: system-ui, sans-serif;
 }
 
-#Contact input:focus,
-#Contact textarea:focus {
+#contact-form input:focus,
+#contact-form textarea:focus {
   outline: 2px solid #50ff99;
 }
 
-#Contact button {
+#contact-form button {
   background-color: transparent;
   color: #50ff99;
   border: 2px solid #50ff99;
@@ -189,7 +270,7 @@ section p, section ul {
   transition: all 0.3s;
 }
 
-#Contact button:hover {
+#contact-form button:hover {
   background-color: #50ff99;
   color: #040c24;
 }
@@ -209,12 +290,50 @@ section.show, header.show {
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;
+  border-right: 2px solid #50ff99;
+}
+
+.typing-small {
+  font-size: 24px;
+  color: #50ff99;
+  animation: typingSmall 2s steps(20, end) 1, blink 0.7s step-end infinite;
+}
+
+.typing {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.typing-small {
+  font-size: 24px;
+  color: #50ff99;
+  border-right: 2px solid #50ff99;
+  animation: typingSmall 2s steps(20, end) 1, blink 0.7s step-end 2s 1;
+}
+
+.typing {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
   border-right: 3px solid #50ff99;
   font-family: 'Courier New', monospace;
   animation: typing 6s steps(50, end) forwards, blink 0.7s step-end infinite;
   color: #fff;
   font-size: 36px;
   line-height: 1.4;
+}
+
+.typing br {
+  content: "";
+}
+
+.typing {
+  color: #fff;
+}
+
+.typing::first-line {
+  font-size: 20px;
+  color: #50ff99;
 }
 
 @keyframes typing {
@@ -224,17 +343,4 @@ section.show, header.show {
 
 @keyframes blink {
   50% { border-color: transparent }
-}
-
-@media (max-width: 768px) {
-  header {
-    padding: 30px;
-    height: auto;
-  }
-  .typing {
-    font-size: 28px;
-  }
-  .projects-container {
-    flex-direction: column;
-  }
 }
