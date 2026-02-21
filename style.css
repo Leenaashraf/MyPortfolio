@@ -77,8 +77,8 @@ header {
 
 section {
   max-width: 900px;
-  margin: 100px 50px;
-  padding-top: 50px;
+  margin: 100px auto;
+  padding-top: 50px 0 0 0;
   scroll-margin-top: 100px;
 }
 
