@@ -70,24 +70,14 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: flex-start;
   height: 100vh;
-  padding: 0 50px;
-}
-
-header h3 {
-  color: #50ff99;
-  font-family: 'Courier New', monospace;
-  margin-bottom: 10px;
-}
-
-header h1 {
-  font-size: 48px;
-  line-height: 1.2;
+  padding: 50px;
 }
 
 section {
   max-width: 900px;
-  margin: 120px 0 50px 50px;
+  margin: 100px 50px;
   padding-top: 50px;
   scroll-margin-top: 100px;
 }
@@ -112,28 +102,69 @@ section p, section ul {
 
 .project-card {
   background: #0a153e;
-  border: 1px solid #50ff99;
+  padding: 20px;
   border-radius: 10px;
-  padding: 15px;
-  width: 250px;
-  transition: transform 0.3s, box-shadow 0.3s;
+  flex: 1 1 calc(45% - 20px);
+  min-width: 250px;
+  color: #50ff99;
 }
 
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 10px rgba(80, 255, 153, 0.5);
+.skills-icons {
+  display: flex;
+  gap: 30px;
+  margin-top: 15px;
+  flex-wrap: wrap;
 }
 
-#contact-form {
-  max-width: 500px;       
-  margin: 20px auto 0 auto;
+.skill {
+  position: relative;
+  text-align: center;
+  cursor: pointer;
+}
+
+.skill i {
+  font-size: 40px;
+  color: white;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.skill:hover i {
+  transform: scale(1.3);
+  color: #686969; 
+}
+
+.skill span {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #50ff99;
+  padding: 5px 8px;
+  border-radius: 5px;
+  white-space: nowrap;
+  font-size: 14px;
+  transition: opacity 0.3s;
+  z-index: 10;
+}
+
+.skill:hover span {
+  visibility: visible;
+  opacity: 1;
+}
+
+#Contact form {
+  max-width: 500px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-#contact-form input,
-#contact-form textarea {
+#Contact input,
+#Contact textarea {
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #50ff99;
@@ -142,12 +173,12 @@ section p, section ul {
   font-family: system-ui, sans-serif;
 }
 
-#contact-form input:focus,
-#contact-form textarea:focus {
+#Contact input:focus,
+#Contact textarea:focus {
   outline: 2px solid #50ff99;
 }
 
-#contact-form button {
+#Contact button {
   background-color: transparent;
   color: #50ff99;
   border: 2px solid #50ff99;
@@ -158,7 +189,7 @@ section p, section ul {
   transition: all 0.3s;
 }
 
-#contact-form button:hover {
+#Contact button:hover {
   background-color: #50ff99;
   color: #040c24;
 }
@@ -193,4 +224,17 @@ section.show, header.show {
 
 @keyframes blink {
   50% { border-color: transparent }
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 30px;
+    height: auto;
+  }
+  .typing {
+    font-size: 28px;
+  }
+  .projects-container {
+    flex-direction: column;
+  }
 }
