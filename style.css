@@ -294,8 +294,7 @@ section.show, header.show {
   color: #50ff99;
   font-family: 'Courier New', monospace;
   font-size: 22px;
-  animation: typing1 2.5s steps(30, end) forwards,
-             blink 0.6s step-end infinite;
+  animation: typing1 2.5s steps(30, end) forwards;
 }
 
 .typing-white {
@@ -307,7 +306,7 @@ section.show, header.show {
   font-family: 'Courier New', monospace;
   font-size: 36px;
   animation: typing2 3s steps(30, end) 2.6s forwards,
-             blink 0.6s step-end infinite;
+             blink 0.5s step-end infinite;
 }
 
 @keyframes typing1 {
@@ -320,6 +319,9 @@ section.show, header.show {
   to { width: 100% }
 }
 
+@keyframes blink {
+  50% { border-color: transparent; }
+}
 @keyframes blink {
   50% { border-color: transparent; }
 }
