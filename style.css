@@ -293,15 +293,15 @@ section.show, header.show {
   position: relative;
 }
 
-#typed-text .line1 { color: #50ff99; font-size: 22px; }
+#typed-text .line1 { color: #50ff99; font-size: 22px; display: block; }
 #typed-text .line2 { color: white; font-size: 36px; display: block; }
 
 .cursor {
   display: inline-block;
-  background-color: currentColor;
   width: 2px;
-  animation: blink 0.7s steps(1) infinite;
+  background-color: currentColor;
   margin-left: 2px;
+  animation: blink 0.7s steps(1) infinite;
 }
 
 @keyframes blink {
