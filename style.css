@@ -136,7 +136,6 @@ section p, section ul {
   box-shadow: 0 4px 10px rgba(80, 255, 153, 0.5);
 }
 
-
 .skills-icons {
   display: flex;
   gap: 30px;
@@ -292,47 +291,36 @@ section.show, header.show {
   color: white;
 }
 
-.line {
-  display: block;
+.line1,
+.line2 {
+  display: inline-block;
   white-space: nowrap;
   overflow: hidden;
 }
 
-/* First line green */
+/* first line green, smaller */
 .line1 {
   color: #50ff99;
   font-size: 22px;
-  line-height: 1.2;
-  width: 0ch;
-  border-right: 2px solid #50ff99;
-  animation: typing1 2.5s steps(26, end) forwards,
-             blinkCursor 0.7s step-end infinite alternate 2.5s;
+  line-height: 1.2; /* tighter line spacing */
+  animation: typing1 2.5s steps(26, end) forwards;
 }
 
-/* Second line white */
+/* second line white */
 .line2 {
   color: white;
   font-size: 36px;
-  line-height: 1.2;
-  width: 0ch;
-  border-right: 2px solid white;
-  animation: typing2 3s steps(17, end) forwards 2.6s,
-             blinkCursor 0.7s step-end infinite alternate 5.6s;
+  line-height: 1.2; /* tighter line spacing */
+  animation: typing2 3s steps(17, end) 2.6s forwards;
 }
 
-/* typing keyframes */
+/* keyframes for typing */
 @keyframes typing1 {
-  from { width: 0ch; }
-  to   { width: 26ch; }
+  from { width: 0ch; border-right: 2px solid #50ff99; }
+  to   { width: 26ch; border-right: none; }
 }
 
 @keyframes typing2 {
-  from { width: 0ch; }
-  to   { width: 17ch; }
-}
-
-/* blinking cursor */
-@keyframes blinkCursor {
-  0%, 100% { border-color: transparent; }
-  50% { border-color: currentColor; }
+  from { width: 0ch; border-right: 2px solid white; }
+  to   { width: 17ch; border-right: 2px solid white; }
 }
