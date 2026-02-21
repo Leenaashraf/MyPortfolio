@@ -294,31 +294,59 @@ section.show, header.show {
   font-family: 'Courier New', monospace;
 }
 
+.typing-container {
+  display: inline-block;
+  font-family: 'Courier New', monospace;
+  color: white;
+  font-size: 36px;
+  position: relative;
+}
+
+.typing-green,
+.typing-white {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* animate first line */
 .typing-green {
   color: #50ff99;
   font-size: 22px;
-  border-right: 2px solid #50ff99;
-  animation: typing1 2.5s steps(30, end) forwards;
+  width: 0ch;
+  animation: typing1 2.5s steps(26, end) forwards;
 }
 
+/* animate second line */
 .typing-white {
   color: white;
   font-size: 36px;
-  border-right: 2px solid white;
-  animation: typing2 3s steps(30, end) 2.6s forwards,
-             blink 0.6s ease-in-out infinite;
+  width: 0ch;
+  animation: typing2 3s steps(17, end) 2.6s forwards;
+}
+
+/* SINGLE CURSOR at the end of container */
+.typing-container::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 2px;
+  height: 1em;
+  background-color: #50ff99;
+  animation: blink 0.6s step-end infinite;
 }
 
 @keyframes typing1 {
-  from { width: 0 }
-  to { width: 30ch; }
+  from { width: 0ch; }
+  to { width: 26ch; } /* number of characters in line 1 */
 }
 
 @keyframes typing2 {
-  from { width: 0 }
-  to { width: 18ch; }
+  from { width: 0ch; }
+  to { width: 17ch; } /* number of characters in line 2 */
 }
 
 @keyframes blink {
-  50% { border-color: transparent; }
+  50% { opacity: 0; }
 }
