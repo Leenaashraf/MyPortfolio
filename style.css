@@ -286,61 +286,52 @@ section.show, header.show {
   transform: translateY(0);
 }
 
-.typing {
-  display: inline-block;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 2px solid #50ff99;
-}
-
-.typing-small {
-  font-size: 24px;
-  color: #50ff99;
-  animation: typingSmall 2s steps(20, end) 1, blink 0.7s step-end infinite;
-}
-
-.typing {
-  display: inline-block;
-  white-space: nowrap;
-}
-
-.typing-small {
-  font-size: 24px;
-  color: #50ff99;
-  border-right: 2px solid #50ff99;
-  animation: typingSmall 2s steps(20, end) 1, blink 0.7s step-end 2s 1;
-}
-
-.typing {
-  display: inline-block;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 3px solid #50ff99;
+.typing-container {
   font-family: 'Courier New', monospace;
-  animation: typing 6s steps(50, end) forwards, blink 0.7s step-end infinite;
-  color: #fff;
   font-size: 36px;
   line-height: 1.4;
 }
 
-.typing br {
-  content: "";
+.typing-container .line {
+  display: block;        /* stack lines vertically */
+  white-space: nowrap;
+  overflow: hidden;
 }
 
-.typing {
-  color: #fff;
-}
-
-.typing::first-line {
-  font-size: 20px;
+.line1 {
+  font-size: 24px;
   color: #50ff99;
+  border-right: 2px solid #50ff99;
+  width: 0ch;
+  animation: typing1 2.5s steps(26, end) forwards;
 }
 
-@keyframes typing {
-  from { width: 0 }
-  to { width: 45ch }
+.line2 {
+  font-size: 36px;
+  color: #fff;
+  border-right: 2px solid #fff;
+  width: 0ch;
+  animation: typing2 3s steps(17, end) 2.6s forwards; /* starts after line1 finishes */
+}
+
+/* blinking cursor at the end of second line */
+.typing-container .line2::after {
+  content: "";
+  border-right: 2px solid white;
+  animation: blink 0.7s step-end infinite;
+  margin-left: 2px;
+}
+
+@keyframes typing1 {
+  from { width: 0ch; }
+  to   { width: 26ch; }
+}
+
+@keyframes typing2 {
+  from { width: 0ch; }
+  to   { width: 17ch; }
 }
 
 @keyframes blink {
-  50% { border-color: transparent }
+  50% { border-color: transparent; }
 }
