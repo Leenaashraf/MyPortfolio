@@ -290,38 +290,48 @@ section.show, header.show {
   font-family: 'Courier New', monospace;
   font-size: 36px;
   color: white;
+  position: relative;
 }
 
-.line1,
-.line2 {
-  display: inline-block;
+.line {
+  display: block;
   white-space: nowrap;
   overflow: hidden;
 }
 
-/* first line green, smaller */
+/* first line green */
 .line1 {
   color: #50ff99;
   font-size: 22px;
-  line-height: 1.2; /* tighter line spacing */
-  animation: typing1 2.5s steps(26, end) forwards;
+  line-height: 1.2;
+  width: 0ch;
+  border-right: 2px solid #50ff99;
+  animation: typing1 2.5s steps(26, end) forwards, blinkCursor 0.7s step-end infinite alternate 2.5s;
 }
 
 /* second line white */
 .line2 {
   color: white;
   font-size: 36px;
-  line-height: 1.2; /* tighter line spacing */
-  animation: typing2 3s steps(17, end) 2.6s forwards;
+  line-height: 1.2;
+  width: 0ch;
+  border-right: 2px solid white;
+  animation: typing2 3s steps(17, end) forwards 2.7s, blinkCursor 0.7s step-end infinite alternate 5.7s;
 }
 
-/* keyframes for typing */
+/* typing keyframes */
 @keyframes typing1 {
-  from { width: 0ch; border-right: 2px solid #50ff99; }
-  to   { width: 26ch; border-right: none; }
+  from { width: 0ch; }
+  to { width: 26ch; }
 }
 
 @keyframes typing2 {
-  from { width: 0ch; border-right: 2px solid white; }
-  to   { width: 17ch; border-right: 2px solid white; }
+  from { width: 0ch; }
+  to { width: 17ch; }
+}
+
+/* blinking cursor */
+@keyframes blinkCursor {
+  0%, 100% { border-color: transparent; }
+  50% { border-color: currentColor; }
 }
