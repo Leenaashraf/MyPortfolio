@@ -7,12 +7,20 @@ const path = require("path");
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, "public"))); // serve HTML/CSS/JS
+app.use(express.static(path.join(__dirname, "public")));
+
+// Health check endpoint for Docker
+app.get("/health", (req, res) => {
+  res.json({ 
+    status: "OK", 
+    time: new Date().toISOString(),
+    email_configured: !!process.env.EMAIL_USER
+  });
+});
 
 app.post("/send-email", async (req, res) => {
   const { name, email, message } = req.body;
 
-  // Validate input
   if (!name || !email || !message) {
     return res.status(400).json({ 
       success: false, 
@@ -24,15 +32,15 @@ app.post("/send-email", async (req, res) => {
     let transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: process.env.EMAIL_USER,      // Gets your yleenaash7@gmail.com from GitHub Secrets
-        pass: process.env.EMAIL_PASS        // Gets your app password from GitHub Secrets
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
       }
     });
 
     await transporter.sendMail({
       from: `"Portfolio Contact" <${process.env.EMAIL_USER}>`,
-      replyTo: email,  // So you can reply directly to the person who contacted you
-      to: process.env.EMAIL_USER,  // Sends to yourself
+      replyTo: email,
+      to: process.env.EMAIL_USER,
       subject: `Portfolio Message from ${name}`,
       text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
       html: `
@@ -44,23 +52,18 @@ app.post("/send-email", async (req, res) => {
       `
     });
 
-    res.json({ success: true, message: "Email sent successfully!" });
+    res.json({ success: true });
   } catch (error) {
     console.error("Email error:", error);
     res.status(500).json({ 
       success: false, 
-      error: "Failed to send email. Please try again later." 
+      error: "Failed to send email" 
     });
   }
 });
 
-// Add a test endpoint to check if server is running
-app.get("/test", (req, res) => {
-  res.json({ message: "Server is running!" });
-});
-
-const PORT = process.env.PORT || 3000; // Use PORT from environment or default to 3000
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`✅ Server running on http://localhost:${PORT}`);
-  console.log(`📧 Email configured for: ${process.env.EMAIL_USER ? process.env.EMAIL_USER : 'NOT SET'}`);
+  console.log(`✅ Server running on port ${PORT}`);
+  console.log(`📧 Email configured: ${!!process.env.EMAIL_USER}`);
 });
