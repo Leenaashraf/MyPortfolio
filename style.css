@@ -300,7 +300,7 @@ section.show, header.show {
 
 /* Target ONLY the first line (Welcome to my portfolio) to be green */
 .typing-line1 {
-  color: #50ff99 !important;  /* Green for first line */
+  color: #50ff99 !important; 
   font-size: 20px;
   display: block;
 }
