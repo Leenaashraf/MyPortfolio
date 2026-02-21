@@ -286,9 +286,8 @@ section.show, header.show {
   transform: translateY(0);
 }
 
-/* Green first line */
 .typing-green {
-  display: block;
+  display: inline-block; /* was block */
   color: #50ff99;
   font-size: 22px;
   font-family: 'Courier New', monospace;
@@ -298,9 +297,8 @@ section.show, header.show {
   animation: typing1 2.5s steps(26, end) forwards;
 }
 
-/* White second line */
 .typing-white {
-  display: block;
+  display: inline-block; /* was block */
   color: white;
   font-size: 36px;
   font-family: 'Courier New', monospace;
