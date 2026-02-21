@@ -287,54 +287,25 @@ section.show, header.show {
 }
 
 .typing {
-  display: inline-block;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 2px solid #50ff99;
-}
-
-.typing-small {
-  font-size: 24px;
-  color: #50ff99;
-  animation: typingSmall 2s steps(20, end) 1, blink 0.7s step-end infinite;
-}
-
-.typing {
-  display: inline-block;
-  white-space: nowrap;
-}
-
-.typing-small {
-  font-size: 24px;
-  color: #50ff99;
-  border-right: 2px solid #50ff99;
-  animation: typingSmall 2s steps(20, end) 1, blink 0.7s step-end 2s 1;
-}
-
-.typing {
+  color: #fff;  /* This makes the second line white by default */
+  font-size: 36px;
+  line-height: 1.4;
+  font-family: 'Courier New', monospace;
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;
   border-right: 3px solid #50ff99;
-  font-family: 'Courier New', monospace;
   animation: typing 6s steps(50, end) forwards, blink 0.7s step-end infinite;
-  color: #fff;
-  font-size: 36px;
-  line-height: 1.4;
 }
 
-.typing br {
-  content: "";
-}
-
-.typing {
-  color: #fff;
-}
-
-.typing::first-line {
+/* Target ONLY the first line (Welcome to my portfolio) to be green */
+.typing-line1 {
+  color: #50ff99 !important;  /* Green for first line */
   font-size: 20px;
-  color: #50ff99;
+  display: block;
 }
+
+/* The second line (I'm Leena Abdalla) will inherit white from .typing */
 
 @keyframes typing {
   from { width: 0 }
