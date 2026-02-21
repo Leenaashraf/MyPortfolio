@@ -4,11 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 </head>
 <body>  
+  <!-- NAV -->
   <nav>
     <div class="social-icons">
       <a href="https://github.com/Leenaashraf" target="_blank"><i class="fa-brands fa-github"></i></a>
@@ -26,6 +27,7 @@
     </div>
   </nav>
 
+  <!-- HOME -->
   <header id="Home">
     <h1 class="typing">
       Hello, my name is<br>
@@ -34,6 +36,7 @@
     </h1>
   </header>
 
+  <!-- ABOUT -->
   <section id="About">
     <h2>About</h2>
     <p>
@@ -42,6 +45,7 @@
     </p>
   </section>
 
+  <!-- PROJECTS -->
   <section id="Projects">
     <h2>Projects</h2>
     <div class="projects-container">
@@ -68,8 +72,10 @@
     </div>
   </section>
 
+  <!-- SKILLS -->
   <section id="Skills">
     <h2>Skills</h2>
+
     <h3>Languages & Tools</h3>
     <div class="skills-icons">
       <div class="skill"><i class="devicon-python-plain"></i><span>Python</span></div>
@@ -81,6 +87,7 @@
       <div class="skill"><i class="devicon-git-plain"></i><span>Git/GitHub</span></div>
       <div class="skill"><i class="fa-solid fa-terminal"></i><span>Kali Linux</span></div>
     </div>
+
     <h3>Programming & Development Skills</h3>
     <p>
       Object-oriented programming<br>
@@ -94,15 +101,19 @@
     </p>
   </section>
 
+  <!-- CONTACT -->
   <section id="Contact">
     <h2>Contact</h2>
     <form id="contact-form">
       <label for="name">Name</label>
       <input type="text" id="name" name="name" placeholder="Your Name" required>
+
       <label for="email">Email</label>
       <input type="email" id="email" name="email" placeholder="you@example.com" required>
+
       <label for="message">Message</label>
       <textarea id="message" name="message" placeholder="Your message here..." rows="5" required></textarea>
+
       <button type="submit">Send Message</button>
     </form>
   </section>
