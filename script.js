@@ -2,7 +2,10 @@
 document.querySelectorAll('.nav-links a').forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
-    document.querySelector(link.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
   });
 });
 
@@ -14,11 +17,15 @@ function highlightNav() {
   let current = "";
   sections.forEach(section => {
     const sectionTop = section.offsetTop - 150;
-    if (pageYOffset >= sectionTop) current = section.getAttribute("id");
+    if (window.pageYOffset >= sectionTop) {
+      current = section.getAttribute("id");
+    }
   });
   navLinks.forEach(link => {
     link.classList.remove("active");
-    if (link.getAttribute("href").includes(current)) link.classList.add("active");
+    if (link.getAttribute("href").includes(current)) {
+      link.classList.add("active");
+    }
   });
 }
 
@@ -27,30 +34,58 @@ window.addEventListener("load", highlightNav);
 
 // Contact form submission
 const form = document.getElementById("contact-form");
-form.addEventListener("submit", async e => {
-  e.preventDefault();
-  const name = form.name.value;
-  const email = form.email.value;
-  const message = form.message.value;
+if (form) {
+  form.addEventListener("submit", async e => {
+    e.preventDefault();
+    
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const message = form.message.value.trim();
 
-  try {
-    const res = await fetch("http://localhost:3000/send-email", {  // match port here
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, message })
-    });
-    const data = await res.json();
-    if (data.success) {
-      alert("✅ Message sent!");
-      form.reset();
-    } else {
-      alert("❌ Failed to send message.");
+    // Validation
+    if (!name || !email || !message) {
+      alert("Please fill in all fields");
+      return;
     }
-  } catch (err) {
-    alert("❌ Error sending message. Check console.");
-    console.error(err);
-  }
-});
+
+    if (!email.includes('@') || !email.includes('.')) {
+      alert("Please enter a valid email address");
+      return;
+    }
+
+    // Disable button while sending
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Sending...";
+
+    try {
+      // FIXED: Use dynamic base URL that works everywhere
+      const baseUrl = window.location.origin;
+      const res = await fetch(`${baseUrl}/send-email`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, message })
+      });
+
+      const data = await res.json();
+      
+      if (data.success) {
+        alert("✅ Message sent successfully!");
+        form.reset();
+      } else {
+        alert(`❌ ${data.error || "Failed to send message."}`);
+      }
+    } catch (err) {
+      console.error("Fetch error:", err);
+      alert("❌ Error sending message. Check console.");
+    } finally {
+      // Re-enable button
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+    }
+  });
+}
 
 // Scroll reveal effect
 const revealElements = document.querySelectorAll("section, header");
@@ -58,8 +93,13 @@ function revealOnScroll() {
   const windowHeight = window.innerHeight;
   revealElements.forEach(el => {
     const elementTop = el.getBoundingClientRect().top;
-    if (elementTop < windowHeight - 100) el.classList.add("show");
+    const elementBottom = el.getBoundingClientRect().bottom;
+    
+    if (elementTop < windowHeight - 100 && elementBottom > 0) {
+      el.classList.add("show");
+    }
   });
 }
+
 window.addEventListener("scroll", revealOnScroll);
 window.addEventListener("load", revealOnScroll);
