@@ -42,26 +42,21 @@ if (form) {
     const email = form.email.value.trim();
     const message = form.message.value.trim();
 
-    // Validation
     if (!name || !email || !message) {
       alert("Please fill in all fields");
       return;
     }
 
-    if (!email.includes('@') || !email.includes('.')) {
-      alert("Please enter a valid email address");
-      return;
-    }
-
-    // Disable button while sending
     const submitBtn = form.querySelector('button[type="submit"]');
     const originalText = submitBtn.textContent;
     submitBtn.disabled = true;
     submitBtn.textContent = "Sending...";
 
     try {
-      // FIXED: Use dynamic base URL that works everywhere
+      // FIXED: Use current domain, not localhost
       const baseUrl = window.location.origin;
+      console.log("Sending to:", baseUrl + "/send-email");
+      
       const res = await fetch(`${baseUrl}/send-email`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -80,7 +75,6 @@ if (form) {
       console.error("Fetch error:", err);
       alert("❌ Error sending message. Check console.");
     } finally {
-      // Re-enable button
       submitBtn.disabled = false;
       submitBtn.textContent = originalText;
     }
