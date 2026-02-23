@@ -50,7 +50,7 @@ nav {
   color: #040c24;
 }
 
-.MyCV button {
+.Resume button {
   background: transparent;
   border: 2px solid #50ff99;
   color: #50ff99;
@@ -61,7 +61,7 @@ nav {
   transition: 0.3s;
 }
 
-.MyCV button:hover {
+.Resume button:hover {
   background: #50ff99;
   color: #040c24;
 }
