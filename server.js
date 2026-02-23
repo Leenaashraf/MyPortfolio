@@ -7,7 +7,7 @@ const path = require("path");
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(__dirname));
 
 // Health check endpoint for Docker
 app.get("/health", (req, res) => {
